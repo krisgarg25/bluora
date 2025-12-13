@@ -141,9 +141,9 @@ const ContactPage = () => {
             {/* Main Content - Same Background, No Extra Glass */}
             <div className="relative z-10 container mx-auto px-6 py-12">
                 <div className="grid md:grid-cols-2 gap-12">
-                    {/* Contact Information Section */}
+                    {/* Contact Information Section - Hidden on Mobile */}
                     <motion.div
-                        className="space-y-8"
+                        className="hidden md:block space-y-8"
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7, delay: 0.3 }}
