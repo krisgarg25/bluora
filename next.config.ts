@@ -1,14 +1,17 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
   // If your repo name is 'bluora', uncomment the line below:
-  basePath: '/bluora1',
+  // Only use basePath for production (GitHub Pages)
+  basePath: isProd ? '/bluora1' : '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/bluora1',
+    NEXT_PUBLIC_BASE_PATH: isProd ? '/bluora1' : '',
   },
 };
 
