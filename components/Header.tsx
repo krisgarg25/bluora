@@ -25,9 +25,9 @@ export default function Header({ opacity }: HeaderProps) {
             className="fixed  w-full z-1 mt-2 "
         >
             {/* Glass Background Effect */}
-            <div className="absolute max-w-full mx-28 rounded-full inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent backdrop-blur-md border  border-white/10"></div>
+            <div className="absolute max-w-full mx-4 rounded-full inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent backdrop-blur-md border  border-white/10"></div>
 
-            <nav className="relative max-w-7xl mx-auto px-6 lg:px-8 pointer-events-auto">
+            <nav className="relative max-w-full mx-4 px-6 lg:px-8 pointer-events-auto">
                 <div className="flex items-center justify-between h-20">
 
                     {/* Logo */}
