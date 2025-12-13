@@ -15,7 +15,7 @@ export default function Header({ opacity }: HeaderProps) {
         { name: 'Home', href: '#' },
         { name: 'About', href: '#about' },
         { name: 'Products', href: '#products' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Contact', href: '/contact' },
     ];
 
     return (
@@ -30,17 +30,17 @@ export default function Header({ opacity }: HeaderProps) {
                 <div className="flex items-center justify-between h-20">
 
                     {/* Logo */}
-                    <a href="#" className="flex items-center gap-3 group">
+                    <a href="/" className="flex items-center gap-3 group">
                         <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-2.5 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-500/20">
                             <Droplets size={22} className="text-white" strokeWidth={2.5} />
                         </div>
                         <div className="flex flex-col leading-none">
-              <span className="text-xl font-bold text-white tracking-tight">
-                Bluora<span className="text-cyan-400">™</span>
-              </span>
+                            <span className="text-xl font-bold text-white tracking-tight">
+                                Bluora<span className="text-cyan-400">™</span>
+                            </span>
                             <span className="text-[9px] text-gray-400 uppercase tracking-widest mt-0.5">
-                The Power of Pure
-              </span>
+                                The Power of Pure
+                            </span>
                         </div>
                     </a>
 
