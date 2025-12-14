@@ -79,12 +79,12 @@ const ContactPage = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-black text-white relative overflow-hidden">
 
             {/* Particles Background - COMMON FOR ENTIRE PAGE */}
-            <div className="absolute inset-0 z-0 opacity-50">
+            <div className="absolute inset-0 z-0 opacity-40">
                 <Particles
-                    particleColors={['#06b6d4', '#3b82f6', '#a855f7']}
-                    particleCount={400}
+                    particleColors={['#0ea5e9', '#14b8a6', '#38bdf8']}
+                    particleCount={200}
                     particleSpread={5}
-                    speed={0.1}
+                    speed={0.08}
                     particleBaseSize={100}
                     moveParticlesOnHover={true}
                     alphaParticles={true}
@@ -92,22 +92,22 @@ const ContactPage = () => {
                 />
             </div>
 
-            {/* Radial Glow Top */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-radial from-cyan-400/20 via-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+            {/* Radial Glow Top - Softer single color */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-radial from-sky-500/15 via-teal-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
-            {/* Radial Glow Bottom */}
-            <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-gradient-radial from-purple-500/15 via-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+            {/* Radial Glow Bottom - Matching teal */}
+            <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-gradient-radial from-teal-500/10 via-sky-600/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
 
             {/* Bluora Logo - Top Left */}
             <div className="relative z-10 pt-6 px-6">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-2.5 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-500/20">
+                    <div className="bg-gradient-to-br from-sky-500 to-teal-500 p-2.5 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-sky-500/20">
                         <Droplets size={22} className="text-white" strokeWidth={2.5} />
                     </div>
                     <div className="flex flex-col leading-none">
                         <span className="text-xl font-bold text-white tracking-tight">
-                            Bluora<span className="text-cyan-400">™</span>
+                            Bluora<span className="text-sky-400">™</span>
                         </span>
                         <span className="text-[9px] text-gray-400 uppercase tracking-widest mt-0.5">
                             The Power of Pure
@@ -118,19 +118,19 @@ const ContactPage = () => {
 
             {/* Liquid Glass Header */}
             <div className="relative z-10 pt-6">
-                <div className=" justify-items-center container mx-auto px-6">
+                <div className="flex justify-center container mx-auto px-4 md:px-6">
                     {/* Liquid Glass Effect with Tailwind */}
-                    <div className=" rounded-full border border-cyan-400/30 shadow-2xl/20 backdrop-blur-sm bg-white/10 w-2xl">
+                    <div className="rounded-2xl md:rounded-full border border-white/10 shadow-2xl/20 backdrop-blur-md bg-white/5 w-full max-w-2xl">
                         <motion.div
-                            className="text-center py-8 px-6"
+                            className="text-center py-6 md:py-8 px-4 md:px-6"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 mb-3">
+                            <h1 className="text-3xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-400 mb-2 md:mb-3 tracking-tight">
                                 Get In Touch
                             </h1>
-                            <p className="text-lg md:text-xl text-white/90 font-semibold">
+                            <p className="text-base md:text-xl text-white/70 font-medium">
                                 We&apos;d love to hear from you. Reach out to us anytime!
                             </p>
                         </motion.div>
@@ -141,18 +141,18 @@ const ContactPage = () => {
             {/* Main Content - Same Background, No Extra Glass */}
             <div className="relative z-10 container mx-auto px-6 py-12">
                 <div className="grid md:grid-cols-2 gap-12">
-                    {/* Contact Information Section */}
+                    {/* Contact Information Section - Hidden on Mobile */}
                     <motion.div
-                        className="space-y-8"
+                        className="hidden md:block space-y-8"
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7, delay: 0.3 }}
                     >
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-6">
+                            <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">
                                 Contact Information
                             </h2>
-                            <p className="text-cyan-100/70 mb-8">
+                            <p className="text-slate-300/70 mb-8 font-light">
                                 Have questions about our products or services? Feel free to
                                 contact us through any of the following channels.
                             </p>
@@ -162,18 +162,18 @@ const ContactPage = () => {
                         <div className="space-y-6">
                             {/* Address */}
                             <motion.div
-                                className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-lg rounded-xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-cyan-400/20"
-                                whileHover={{ scale: 1.05 }}
+                                className="bg-slate-800/30 backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-300 border border-white/10 hover:border-sky-500/30 hover:bg-slate-800/40"
+                                whileHover={{ scale: 1.02 }}
                             >
                                 <div className="flex items-start space-x-4">
-                                    <div className="bg-cyan-500/20 p-3 rounded-lg">
-                                        <MapPin className="text-cyan-400" size={24} />
+                                    <div className="bg-sky-500/15 p-3 rounded-xl">
+                                        <MapPin className="text-sky-400" size={24} />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-white mb-2">
                                             Our Address
                                         </h3>
-                                        <p className="text-cyan-100/70 text-sm">
+                                        <p className="text-slate-300/70 text-sm font-light">
                                             HD DRINKS & BEVERAGES
                                             <br />
                                             Arazi No. 453, Sachendi, Kanpur Nagar,
@@ -186,12 +186,12 @@ const ContactPage = () => {
 
                             {/* Phone */}
                             <motion.div
-                                className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-lg rounded-xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-blue-400/20"
-                                whileHover={{ scale: 1.05 }}
+                                className="bg-slate-800/30 backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-300 border border-white/10 hover:border-teal-500/30 hover:bg-slate-800/40"
+                                whileHover={{ scale: 1.02 }}
                             >
                                 <div className="flex items-start space-x-4">
-                                    <div className="bg-blue-500/20 p-3 rounded-lg">
-                                        <Phone className="text-blue-400" size={24} />
+                                    <div className="bg-teal-500/15 p-3 rounded-xl">
+                                        <Phone className="text-teal-400" size={24} />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-white mb-2">
@@ -199,7 +199,7 @@ const ContactPage = () => {
                                         </h3>
                                         <a
                                             href="tel:+916239190187"
-                                            className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                                            className="text-teal-400 hover:text-teal-300 font-medium transition-colors"
                                         >
                                             +91 6239 190187
                                         </a>
@@ -209,12 +209,12 @@ const ContactPage = () => {
 
                             {/* Email */}
                             <motion.div
-                                className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-lg rounded-xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-cyan-400/20"
-                                whileHover={{ scale: 1.05 }}
+                                className="bg-slate-800/30 backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-300 border border-white/10 hover:border-sky-500/30 hover:bg-slate-800/40"
+                                whileHover={{ scale: 1.02 }}
                             >
                                 <div className="flex items-start space-x-4">
-                                    <div className="bg-cyan-500/20 p-3 rounded-lg">
-                                        <Mail className="text-cyan-400" size={24} />
+                                    <div className="bg-sky-500/15 p-3 rounded-xl">
+                                        <Mail className="text-sky-400" size={24} />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-white mb-2">
@@ -222,7 +222,7 @@ const ContactPage = () => {
                                         </h3>
                                         <a
                                             href="mailto:Info@hddrinksbeverages.com"
-                                            className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors break-all"
+                                            className="text-sky-400 hover:text-sky-300 font-medium transition-colors break-all"
                                         >
                                             Info@hddrinksbeverages.com
                                         </a>
@@ -232,18 +232,18 @@ const ContactPage = () => {
 
                             {/* Business Hours */}
                             <motion.div
-                                className="bg-gradient-to-br from-purple-500/10 to-pink-600/10 backdrop-blur-lg rounded-xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-purple-400/20"
-                                whileHover={{ scale: 1.05 }}
+                                className="bg-slate-800/30 backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-300 border border-white/10 hover:border-teal-500/30 hover:bg-slate-800/40"
+                                whileHover={{ scale: 1.02 }}
                             >
                                 <div className="flex items-start space-x-4">
-                                    <div className="bg-purple-500/20 p-3 rounded-lg">
-                                        <Clock className="text-purple-400" size={24} />
+                                    <div className="bg-teal-500/15 p-3 rounded-xl">
+                                        <Clock className="text-teal-400" size={24} />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-white mb-2">
                                             Business Hours
                                         </h3>
-                                        <p className="text-purple-100/70 text-sm">
+                                        <p className="text-slate-300/70 text-sm font-light">
                                             Monday - Saturday: 9:00 AM - 6:00 PM
                                             <br />
                                             Sunday: Closed
@@ -253,10 +253,10 @@ const ContactPage = () => {
                             </motion.div>
 
                             {/* License Info */}
-                            <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-lg rounded-xl p-6 border-2 border-cyan-400/30 shadow-xl">
-                                <p className="text-sm text-cyan-100/80">
-                                    <span className="font-semibold text-cyan-400">FSSAI License:</span>{" "}
-                                    <span className="font-mono">12724999000167</span>
+                            <div className="bg-gradient-to-r from-sky-500/10 to-teal-500/10 backdrop-blur-lg rounded-xl p-6 border border-white/10 shadow-lg">
+                                <p className="text-sm text-slate-200/80">
+                                    <span className="font-semibold text-sky-400">FSSAI License:</span>{" "}
+                                    <span className="font-mono text-teal-300">12724999000167</span>
                                 </p>
                             </div>
                         </div>
@@ -264,12 +264,12 @@ const ContactPage = () => {
 
                     {/* Contact Form Section */}
                     <motion.div
-                        className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-cyan-400/20"
+                        className="bg-slate-800/40 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/10"
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7, delay: 0.4 }}
                     >
-                        <h2 className="text-3xl font-bold text-white mb-6">
+                        <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">
                             Send Us A Message
                         </h2>
 
@@ -307,7 +307,7 @@ const ContactPage = () => {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block text-sm font-semibold text-cyan-300 mb-2"
+                                    className="block text-sm font-medium text-slate-300 mb-2"
                                 >
                                     Full Name *
                                 </label>
@@ -317,7 +317,7 @@ const ContactPage = () => {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-slate-800/50 border-2 border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white placeholder-cyan-100/30 backdrop-blur-sm"
+                                    className="w-full px-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl focus:border-sky-400 focus:ring-1 focus:ring-sky-400/20 focus:outline-none transition-all text-white placeholder-slate-500 backdrop-blur-sm"
                                     placeholder="Enter your name"
                                 />
                             </div>
@@ -325,7 +325,7 @@ const ContactPage = () => {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-sm font-semibold text-cyan-300 mb-2"
+                                    className="block text-sm font-medium text-slate-300 mb-2"
                                 >
                                     Email Address *
                                 </label>
@@ -335,7 +335,7 @@ const ContactPage = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-slate-800/50 border-2 border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white placeholder-cyan-100/30 backdrop-blur-sm"
+                                    className="w-full px-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl focus:border-sky-400 focus:ring-1 focus:ring-sky-400/20 focus:outline-none transition-all text-white placeholder-slate-500 backdrop-blur-sm"
                                     placeholder="your.email@example.com"
                                 />
                             </div>
@@ -343,7 +343,7 @@ const ContactPage = () => {
                             <div>
                                 <label
                                     htmlFor="phone"
-                                    className="block text-sm font-semibold text-cyan-300 mb-2"
+                                    className="block text-sm font-medium text-slate-300 mb-2"
                                 >
                                     Phone Number *
                                 </label>
@@ -353,7 +353,7 @@ const ContactPage = () => {
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-slate-800/50 border-2 border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white placeholder-cyan-100/30 backdrop-blur-sm"
+                                    className="w-full px-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl focus:border-sky-400 focus:ring-1 focus:ring-sky-400/20 focus:outline-none transition-all text-white placeholder-slate-500 backdrop-blur-sm"
                                     placeholder="+91 XXXXX XXXXX"
                                 />
                             </div>
@@ -361,7 +361,7 @@ const ContactPage = () => {
                             <div>
                                 <label
                                     htmlFor="subject"
-                                    className="block text-sm font-semibold text-cyan-300 mb-2"
+                                    className="block text-sm font-medium text-slate-300 mb-2"
                                 >
                                     Subject *
                                 </label>
@@ -371,7 +371,7 @@ const ContactPage = () => {
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-slate-800/50 border-2 border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white placeholder-cyan-100/30 backdrop-blur-sm"
+                                    className="w-full px-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl focus:border-sky-400 focus:ring-1 focus:ring-sky-400/20 focus:outline-none transition-all text-white placeholder-slate-500 backdrop-blur-sm"
                                     placeholder="How can we help?"
                                 />
                             </div>
@@ -379,7 +379,7 @@ const ContactPage = () => {
                             <div>
                                 <label
                                     htmlFor="message"
-                                    className="block text-sm font-semibold text-cyan-300 mb-2"
+                                    className="block text-sm font-medium text-slate-300 mb-2"
                                 >
                                     Message *
                                 </label>
@@ -389,15 +389,15 @@ const ContactPage = () => {
                                     value={formData.message}
                                     onChange={handleChange}
                                     rows={5}
-                                    className="w-full px-4 py-3 bg-slate-800/50 border-2 border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors resize-none text-white placeholder-cyan-100/30 backdrop-blur-sm"
+                                    className="w-full px-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl focus:border-sky-400 focus:ring-1 focus:ring-sky-400/20 focus:outline-none transition-all resize-none text-white placeholder-slate-500 backdrop-blur-sm"
                                     placeholder="Tell us more about your inquiry..."
                                 ></textarea>
                             </div>
 
                             <motion.button
                                 onClick={handleSubmit}
-                                className="w-full bg-gradient-to-r cursor-pointer from-cyan-600 via-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-                                whileHover={{ scale: 1.05 }}
+                                className="w-full bg-gradient-to-r cursor-pointer from-sky-500 to-teal-500 text-white py-4 rounded-xl font-semibold hover:shadow-xl hover:shadow-sky-500/30 transition-all duration-300 flex items-center justify-center space-x-2"
+                                whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <Send size={20} />
@@ -411,19 +411,15 @@ const ContactPage = () => {
             {/* Fixed WhatsApp Button */}
             <motion.button
                 onClick={handleWhatsAppClick}
-                className="fixed bottom-6 right-6 bg-gradient-to-br from-green-500 to-green-600 cursor-pointer text-white p-4 rounded-full shadow-2xl shadow-green-500/50 hover:shadow-green-500/80 transition-all duration-300 z-50 group border-2 border-green-400/30"
+                className="fixed bottom-6 right-6 bg-gradient-to-br from-emerald-500 to-emerald-600 cursor-pointer text-white p-4 rounded-full shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 z-50 border border-emerald-400/30"
                 aria-label="Chat on WhatsApp"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
             >
-                <MessageCircle size={32} className="animate-pulse" />
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold animate-ping"></span>
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
-                    1
-                </span>
+                <MessageCircle size={28} />
             </motion.button>
         </div>
     );
