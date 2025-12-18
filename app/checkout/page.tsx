@@ -40,10 +40,11 @@ export default function CheckoutPage() {
     // Pre-fill data from session
     useEffect(() => {
         if (session?.user) {
+            const { name, email } = session.user;
             setFormData(prev => ({
                 ...prev,
-                fullName: session.user.name || '',
-                email: session.user.email || '',
+                fullName: name || '',
+                email: email || '',
             }));
         }
     }, [session]);
@@ -286,8 +287,8 @@ export default function CheckoutPage() {
                                             onChange={handleChange}
                                             maxLength={6}
                                             className={`w-full px-4 py-3 rounded-xl outline-none transition-all duration-300 ${zipError ? 'border-red-500/50 bg-red-500/10' :
-                                                    zipSuccess ? 'border-green-500/50 bg-green-500/10 text-white' :
-                                                        formData.zipCode ? 'bg-white/10 border-cyan-500/50 text-white' : 'bg-black/20 border border-white/10 text-white placeholder-white/20'
+                                                zipSuccess ? 'border-green-500/50 bg-green-500/10 text-white' :
+                                                    formData.zipCode ? 'bg-white/10 border-cyan-500/50 text-white' : 'bg-black/20 border border-white/10 text-white placeholder-white/20'
                                                 }`}
                                             placeholder="400001"
                                         />

@@ -90,10 +90,10 @@ export default function ProfilePage() {
                     >
                         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl flex flex-col items-center text-center">
                             <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-3xl font-bold text-white shadow-lg shadow-cyan-500/20 mb-4">
-                                {session.user.name?.charAt(0).toUpperCase()}
+                                {session.user?.name?.charAt(0).toUpperCase() || 'U'}
                             </div>
-                            <h2 className="text-2xl font-bold text-white mb-1">{session.user.name}</h2>
-                            <p className="text-white/60 text-sm mb-6">{session.user.email}</p>
+                            <h2 className="text-2xl font-bold text-white mb-1">{session.user?.name || 'User'}</h2>
+                            <p className="text-white/60 text-sm mb-6">{session.user?.email || ''}</p>
 
                             <button
                                 onClick={() => signOut({ callbackUrl: '/' })}
@@ -140,8 +140,8 @@ export default function ProfilePage() {
                                                 <div className="flex items-center gap-3">
                                                     <span className="font-mono text-cyan-300 font-bold">#{order._id.slice(-6).toUpperCase()}</span>
                                                     <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${order.status === 'Pending' ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/20' :
-                                                            order.status === 'Delivered' ? 'bg-green-500/20 text-green-300 border border-green-500/20' :
-                                                                'bg-white/10 text-white/70'
+                                                        order.status === 'Delivered' ? 'bg-green-500/20 text-green-300 border border-green-500/20' :
+                                                            'bg-white/10 text-white/70'
                                                         }`}>
                                                         {order.status}
                                                     </span>
