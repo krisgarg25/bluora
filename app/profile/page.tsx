@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Particles from '../../components/Particles';
-import { User, Package, LogOut, Calendar, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
+import { User, Package, LogOut, Calendar, MapPin, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 interface OrderItem {
@@ -80,6 +80,16 @@ export default function ProfilePage() {
             </div>
 
             <div className="container mx-auto px-4 md:px-8 relative z-10 max-w-6xl">
+                <div className="mb-6">
+                    <button
+                        onClick={() => router.back()}
+                        className="flex items-center gap-2 text-white/60 hover:text-cyan-400 transition-colors group"
+                    >
+                        <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+                        <span className="text-sm font-medium">Back</span>
+                    </button>
+                </div>
+
                 <div className="flex flex-col md:flex-row gap-8">
 
                     {/* LEFT: User Profile Card */}

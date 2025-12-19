@@ -99,70 +99,86 @@ export default function Header({ opacity }: HeaderProps) {
                         </>
                     )}
 
-                    {/* Right: Navigation & Mobile Menu */}
-                    <div className="flex items-center gap-6">
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-6">
-                            {navLinks.map((link) => {
-                                const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
-                                return (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className={`text-sm font-medium transition-all duration-200 relative group ${isActive ? 'text-white' : 'text-white/80 hover:text-white'}`}
-                                    >
-                                        {link.name}
-                                        <span className={`absolute -bottom-1 left-0 h-[2px] bg-cyan-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                                    </Link>
-                                );
-                            })}
-                            {session?.user ? (
-                                <div className="relative group/user">
-                                    <div className="flex items-center gap-3 pl-1 pr-4 py-1 bg-white/5 border border-white/10 rounded-full group-hover/user:border-cyan-500/50 transition-colors duration-300 backdrop-blur-md overflow-hidden relative">
-                                        {/* Avatar */}
-                                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-cyan-500/20 shrink-0 z-10">
-                                            {session.user.name?.charAt(0).toUpperCase()}
-                                        </div>
+                    {/* Mobile Only: Profile/Sign In & Menu */}
+                    <div className="flex items-center gap-4 md:hidden">
 
-                                        {/* Container for sliding text */}
-                                        <div className="grid grid-cols-1 grid-rows-1 h-5 overflow-hidden w-auto min-w-[3 rem] max-w-[150px]">
-                                            {/* Name (Visible by default) */}
-                                            <div className="col-start-1 row-start-1 flex items-center transition-transform duration-300 group-hover/user:-translate-y-full">
-                                                <span className="text-sm font-medium text-white/90 truncate pr-1">
-                                                    {session.user.name?.split(' ')[0]}
-                                                </span>
-                                            </div>
+                        {/* Mobile Cart Button (Moved here if we want it in header, but user didn't explicitly ask to move cart from bottom right. 
+                           The current cart is fixed bottom right. I will leave it there as per existing design unless conflicts. 
+                           The user asked for header changes.) */}
 
-                                            {/* Profile Link (Visible on hover) */}
-                                            <div className="col-start-1 row-start-1 flex items-center transition-transform duration-300 translate-y-full group-hover/user:translate-y-0">
-                                                <Link
-                                                    href="/profile"
-                                                    className="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors whitespace-nowrap"
-                                                >
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                                                    PROFILE
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <Link
-                                    href="/auth/signup"
-                                    className="px-6 py-2 text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 border border-white/10"
-                                >
-                                    Sign Up
-                                </Link>
-                            )}
-                        </div>
+                        {/* Profile / Sign In Button */}
+                        {session?.user ? (
+                            <Link href="/profile" className="p-2 text-white/80 hover:text-cyan-400 transition-colors">
+                                <User size={24} />
+                            </Link>
+                        ) : (
+                            <Link href="/auth/signup" className="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 border border-white/10">
+                                Sign In
+                            </Link>
+                        )}
 
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden p-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                            className="p-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                         >
                             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
+                    </div>
+
+                    {/* Desktop Navigation Container (Original) */}
+                    <div className="hidden md:flex items-center gap-6">
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`text-sm font-medium transition-all duration-200 relative group ${isActive ? 'text-white' : 'text-white/80 hover:text-white'}`}
+                                >
+                                    {link.name}
+                                    <span className={`absolute -bottom-1 left-0 h-[2px] bg-cyan-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                </Link>
+                            );
+                        })}
+                        {session?.user ? (
+                            <div className="relative group/user">
+                                <div className="flex items-center gap-3 pl-1 pr-4 py-1 bg-white/5 border border-white/10 rounded-full group-hover/user:border-cyan-500/50 transition-colors duration-300 backdrop-blur-md overflow-hidden relative">
+                                    {/* Avatar */}
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-cyan-500/20 shrink-0 z-10">
+                                        {session.user.name?.charAt(0).toUpperCase()}
+                                    </div>
+
+                                    {/* Container for sliding text */}
+                                    <div className="grid grid-cols-1 grid-rows-1 h-5 overflow-hidden w-auto min-w-[3 rem] max-w-[150px]">
+                                        {/* Name (Visible by default) */}
+                                        <div className="col-start-1 row-start-1 flex items-center transition-transform duration-300 group-hover/user:-translate-y-full">
+                                            <span className="text-sm font-medium text-white/90 truncate pr-1">
+                                                {session.user.name?.split(' ')[0]}
+                                            </span>
+                                        </div>
+
+                                        {/* Profile Link (Visible on hover) */}
+                                        <div className="col-start-1 row-start-1 flex items-center transition-transform duration-300 translate-y-full group-hover/user:translate-y-0">
+                                            <Link
+                                                href="/profile"
+                                                className="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors whitespace-nowrap"
+                                            >
+                                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                                                PROFILE
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <Link
+                                href="/auth/signup"
+                                className="px-6 py-2 text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 border border-white/10"
+                            >
+                                Sign Up
+                            </Link>
+                        )}
                     </div>
                 </div>
             </nav>
@@ -182,29 +198,16 @@ export default function Header({ opacity }: HeaderProps) {
                                     {link.name}
                                 </Link>
                             ))}
-                            {session?.user ? (
-                                <>
-                                    <span className="block text-base font-medium text-white/80 py-2">
-                                        Hi, {session.user.name?.split(' ')[0]}
-                                    </span>
-                                    <button
-                                        onClick={() => {
-                                            signOut();
-                                            setMobileMenuOpen(false);
-                                        }}
-                                        className="block text-base font-bold text-red-400 hover:text-red-300 transition-colors py-2 hover:translate-x-1 duration-200 w-full text-left"
-                                    >
-                                        Logout
-                                    </button>
-                                </>
-                            ) : (
-                                <Link
-                                    href="/auth/signup"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="block text-base font-bold text-cyan-400 hover:text-cyan-300 transition-colors py-2 hover:translate-x-1 duration-200"
+                            {session?.user && (
+                                <button
+                                    onClick={() => {
+                                        signOut();
+                                        setMobileMenuOpen(false);
+                                    }}
+                                    className="block text-base font-bold text-red-400 hover:text-red-300 transition-colors py-2 hover:translate-x-1 duration-200 w-full text-left"
                                 >
-                                    Sign Up
-                                </Link>
+                                    Logout
+                                </button>
                             )}
                         </div>
                     </div>
