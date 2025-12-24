@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono } from "next/font/google"; // Changed from Geist to Inter/Roboto due to build error
 import "./globals.css";
 
@@ -11,6 +11,13 @@ const robotoMono = Roboto_Mono({
   variable: "--font-geist-mono", // Keeping variable name same to avoid refactoring css
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: 'black',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   ? process.env.NEXT_PUBLIC_BASE_URL
