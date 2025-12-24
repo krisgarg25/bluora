@@ -51,6 +51,12 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/tools/hydration-calculator" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
+                                    Hydration Calculator
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/contact" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
                                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
                                     Contact Us
