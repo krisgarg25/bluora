@@ -34,7 +34,13 @@ export default function BluoraLandingVideo() {
                 "addressRegion": "Uttar Pradesh",
                 "postalCode": "209304",
                 "addressCountry": "IN"
-            }
+            },
+            "sameAs": [
+                "https://instagram.com/bluorawater",
+                "https://twitter.com/bluorawater",
+                "https://facebook.com/bluorawater",
+                "https://linkedin.com/company/bluora"
+            ]
         }
     };
 

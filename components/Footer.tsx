@@ -62,6 +62,12 @@ export default function Footer() {
                                     Contact Us
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/press" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
+                                    Media Kit
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
