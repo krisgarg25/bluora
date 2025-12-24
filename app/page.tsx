@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import HomeClient from '../components/HomeClient';
 
 export const metadata: Metadata = {
-    title: "Bluora | The Power of Pure - Premium Alkaline Water",
+    title: "Bluora - Premium Alkaline Packaged Drinking Water",
     description: "Experience the purity of Bluora. Premium alkaline packaged drinking water sourced from pristine environments. Hydrate with the power of pure life.",
     keywords: ["Premium Water", "Alkaline Water", "Bluora", "Luxury Water", "Hydration"],
     openGraph: {
-        title: "Bluora | The Power of Pure - Premium Alkaline Water",
+        title: "Bluora - Premium Alkaline Packaged Drinking Water",
         description: "Experience the purity of Bluora. Premium alkaline packaged drinking water.",
     },
 };

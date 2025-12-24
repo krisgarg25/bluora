@@ -40,6 +40,9 @@ export default function HomeClient() {
             {/* Fixed Glass Header */}
             <Header opacity={headerOpacity} />
 
+            {/* MAIN SEO HEADING - Visually Hidden */}
+            <h1 className="sr-only">Bluora - Premium Alkaline Packaged Drinking Water</h1>
+
             {/* HERO & MISSION SECTION */}
             <div ref={containerRef} className="relative bg-linear-to-br from-slate-900 via-blue-950 to-black text-white h-[600vh] overflow-x-hidden selection:bg-cyan-300 selection:text-black">
 
@@ -73,13 +76,13 @@ export default function HomeClient() {
                             style={{ opacity: textOpacity }}
                             className="hidden md:flex relative items-center justify-center gap-2 md:gap-4 px-4"
                         >
-                            <h1 className="text-[10rem] z-10 md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -mr-13 md:-mr-16">
+                            <div className="text-[10rem] z-10 md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -mr-13 md:-mr-16">
                                 BLU
-                            </h1>
+                            </div>
                             <div className="w-[200px] md:w-[350px]"></div>
-                            <h1 className="text-[10rem] md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -ml-8 md:-ml-16">
+                            <div className="text-[10rem] md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -ml-8 md:-ml-16">
                                 ORA
-                            </h1>
+                            </div>
                         </motion.div>
 
                         {/* MOBILE LAYOUT - Magazine Cover Style */}
@@ -90,9 +93,9 @@ export default function HomeClient() {
                         >
                             {/* Giant BLU - Top Half */}
                             <div className="flex flex-col items-center">
-                                <h1 className="text-[35vw] mt-12 font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none scale-y-125 transform origin-bottom">
+                                <div className="text-[35vw] mt-12 font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none scale-y-125 transform origin-bottom">
                                     BLU
-                                </h1>
+                                </div>
                                 {/* Premium Badge floating near BLU */}
                                 <div className="mt-[-20px] px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-md">
                                     <p className="text-cyan-300 text-[10px] font-bold tracking-[0.3em] uppercase">Premium Hydration</p>
@@ -101,9 +104,9 @@ export default function HomeClient() {
 
                             {/* Giant ORA - Bottom Half */}
                             <div className="flex flex-col items-center">
-                                <h1 className="text-[35vw] font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-t from-white/20 to-transparent select-none scale-y-125 transform origin-top">
+                                <div className="text-[35vw] font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-t from-white/20 to-transparent select-none scale-y-125 transform origin-top">
                                     ORA
-                                </h1>
+                                </div>
                                 {/* Tagline anchoring the bottom */}
                                 <p className="mt-[-20px] mb-16 text-cyan-100/60 text-xs font-medium tracking-widest uppercase">
                                     The Power of Pure
@@ -281,16 +284,16 @@ export default function HomeClient() {
                     >
                         {/* Giant PURE - Top Half */}
                         <div className="flex flex-col items-center">
-                            <h1 className="text-[35vw] font-black  tracking-widest text-transparent bg-clip-text bg-linear-to-b from-cyan-500/10 to-transparent select-none scale-y-125 transform">
+                            <div className="text-[35vw] font-black  tracking-widest text-transparent bg-clip-text bg-linear-to-b from-cyan-500/10 to-transparent select-none scale-y-125 transform">
                                 PURE
-                            </h1>
+                            </div>
                         </div>
 
                         {/* Giant LIFE - Bottom Half */}
                         <div className="flex flex-col items-center">
-                            <h1 className="text-[35vw] pb-28 font-black leading-none tracking-widest text-transparent bg-clip-text bg-linear-to-t from-blue-100/10 to-transparent select-none scale-y-125 transform">
+                            <div className="text-[35vw] pb-28 font-black leading-none tracking-widest text-transparent bg-clip-text bg-linear-to-t from-blue-100/10 to-transparent select-none scale-y-125 transform">
                                 LIFE
-                            </h1>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -493,9 +496,9 @@ export default function HomeClient() {
 
                 {/* Giant Background Text - ABOUT */}
                 <div className="absolute inset-0 flex items-center justify-center z-5 pointer-events-none overflow-hidden">
-                    <h1 className="text-[40vw] md:text-[30vw] font-black text-transparent bg-clip-text bg-linear-to-b from-cyan-500/5 to-transparent select-none leading-none">
+                    <div className="text-[40vw] md:text-[30vw] font-black text-transparent bg-clip-text bg-linear-to-b from-cyan-500/5 to-transparent select-none leading-none">
                         ABOUT
-                    </h1>
+                    </div>
                 </div>
 
                 {/* MOBILE LAYOUT - Vertical Stack Style */}
