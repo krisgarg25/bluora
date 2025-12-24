@@ -178,19 +178,41 @@ export default function ProductDetailPage() {
 
                         {/* Action Area */}
                         <div className="flex flex-col gap-4">
-                            <button
-                                onClick={() => addItem({
-                                    id: product.id,
-                                    title: product.title,
-                                    size: product.size,
-                                    price: product.price,
-                                    image: product.image
-                                })}
-                                className="group w-full md:w-auto px-8 py-5 rounded-2xl bg-white text-black font-bold text-lg tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
-                            >
-                                <ShoppingCart size={22} className="group-hover:rotate-12 transition-transform duration-300" />
-                                <span>Add to Cart</span>
-                            </button>
+                            <div className="flex gap-4 w-full md:w-auto">
+                                <button
+                                    onClick={() => addItem({
+                                        id: product.id,
+                                        title: product.title,
+                                        size: product.size,
+                                        price: product.price,
+                                        image: product.image
+                                    })}
+                                    className="group flex-1 md:flex-none md:min-w-[200px] px-8 py-5 rounded-2xl bg-white text-black font-bold text-lg tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+                                >
+                                    <ShoppingCart size={22} className="group-hover:rotate-12 transition-transform duration-300" />
+                                    <span>Add to Cart</span>
+                                </button>
+
+                                <button
+                                    onClick={() => {
+                                        if (navigator.share) {
+                                            navigator.share({
+                                                title: `Bluora ${product.title}`,
+                                                text: `Check out this ${product.size} Bluora Premium Water at ₹${product.price}!`,
+                                                url: window.location.href,
+                                            }).catch(console.error);
+                                        } else {
+                                            navigator.clipboard.writeText(window.location.href);
+                                            alert("Link copied to clipboard!");
+                                        }
+                                    }}
+                                    className="px-6 py-5 rounded-2xl bg-white/10 text-white hover:bg-white/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center"
+                                    aria-label="Share product"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-share-2"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /><line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></svg>
+                                </button>
+                            </div>
+
                             <p className="text-center md:text-left text-xs text-white/30 flex items-center gap-2 justify-center md:justify-start">
                                 <ShieldCheck size={14} />
                                 30-Day Money Back Guarantee
