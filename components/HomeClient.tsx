@@ -143,7 +143,7 @@ export default function HomeClient() {
                                 videoX={useTransform(scrollYProgress, [0, 1], ["0%", "-3%"])}
                                 videoY={useTransform(scrollYProgress, [0, 1], ["3%", "-4%"])}
                                 videorotate={useTransform(scrollYProgress, [0, 1], [7, 0])}
-                                videoScale={useTransform(scrollYProgress, [0, 1], [1.3, 0.8])}
+                                videoScale={useTransform(scrollYProgress, [0, 1], [0.7, 0.5])}
                                 className="max-w-full max-h-full drop-shadow-[0_0_120px_rgba(6,182,212,0.8)] brightness-84 md:hidden block opacity-100 z-30"
                                 scrollEndThreshold={0.5}
                             />

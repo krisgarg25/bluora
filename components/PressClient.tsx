@@ -62,17 +62,19 @@ export default function PressClient() {
                         <h2 className="text-2xl font-bold text-white">Brand Story</h2>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative group">
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative group flex flex-col gap-6">
                         <p className="text-slate-300 leading-relaxed text-lg">
                             {brandBio}
                         </p>
-                        <button
-                            onClick={handleCopy}
-                            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium text-cyan-300"
-                        >
-                            {copied ? <Check size={16} /> : <Copy size={16} />}
-                            {copied ? 'Copied' : 'Copy Text'}
-                        </button>
+                        <div className="flex justify-end pt-6 border-t border-white/5">
+                            <button
+                                onClick={handleCopy}
+                                className="px-4 py-2 bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/50 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm font-medium group/btn"
+                            >
+                                {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} className="group-hover/btn:scale-110 transition-transform" />}
+                                {copied ? 'Copied to Clipboard' : 'Copy Brand Story'}
+                            </button>
+                        </div>
                     </div>
                 </motion.section>
 

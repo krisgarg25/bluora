@@ -24,6 +24,7 @@ export default function Header({ opacity }: HeaderProps) {
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
         { name: 'Products', href: '/products' },
+        { name: 'Become a Distributor', href: '/become-distributor' },
         { name: 'Contact', href: '/contact' },
     ];
 

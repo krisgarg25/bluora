@@ -57,6 +57,12 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/become-distributor" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
+                                    Become a Distributor
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/tools/hydration-calculator" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
                                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
                                     Hydration Calculator
@@ -86,16 +92,13 @@ export default function Footer() {
                                 { Icon: Twitter, href: "https://twitter.com/bluorawater" },
                                 { Icon: Facebook, href: "https://facebook.com/bluorawater" },
                                 { Icon: Linkedin, href: "https://linkedin.com/company/bluora" }
-                            ].map(({ Icon, href }, index) => (
-                                <Link
+                            ].map(({ Icon }, index) => (
+                                <div
                                     key={index}
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-3 bg-white/5 rounded-xl text-slate-400 hover:text-white hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
+                                    className="p-3 bg-white/5 rounded-xl text-slate-400 hover:text-white hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 cursor-default"
                                 >
                                     <Icon size={18} />
-                                </Link>
+                                </div>
                             ))}
                         </div>
                     </div>
