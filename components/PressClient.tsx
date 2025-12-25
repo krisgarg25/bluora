@@ -92,36 +92,42 @@ export default function PressClient() {
                     <div className="grid md:grid-cols-2 gap-6">
                         {/* Logo Asset */}
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
-                            <div className="h-40 w-full bg-black/40 rounded-xl mb-4 flex items-center justify-center border border-white/5 border-dashed">
-                                <span className="text-3xl font-black text-white">
-                                    Bluora<span className="text-cyan-400">™</span>
-                                </span>
+                            <div className="h-40 w-full bg-black/40 rounded-xl mb-4 flex items-center justify-center border border-white/5 border-dashed p-4">
+                                <img src="/BLUORA-logo.png" alt="Bluora Official Logo" className="max-h-full max-w-full object-contain" />
                             </div>
                             <h3 className="font-bold text-white mb-1">Official Logo</h3>
-                            <p className="text-sm text-slate-400 mb-4">High-resolution PNG, SVG (Dark/Light)</p>
-                            <button className="w-full py-3 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all">
-                                <Download size={18} /> Download Logo Pack
-                            </button>
+                            <p className="text-sm text-slate-400 mb-4">High-resolution PNG</p>
+                            <a
+                                href="/BLUORA-logo.png"
+                                download="BLUORA-logo.png"
+                                className="w-full py-3 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                            >
+                                <Download size={18} /> Download Logo
+                            </a>
                         </div>
 
                         {/* Product Render Asset */}
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
                             <div className="h-40 w-full bg-black/40 rounded-xl mb-4 flex items-center justify-center border border-white/5 border-dashed overflow-hidden relative">
                                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
-                                <span className="text-slate-500 text-sm">Product Render Preview</span>
+                                <img src="/1L.png" alt="Product Render" className="h-full object-contain" />
                             </div>
                             <h3 className="font-bold text-white mb-1">Product Renders</h3>
                             <p className="text-sm text-slate-400 mb-4">3D Renders, Lifestyle Shots</p>
-                            <button className="w-full py-3 bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all">
-                                <Download size={18} /> Download Kit
-                            </button>
+                            <a
+                                href="/1L.png"
+                                download="Bluora-Product-Render.png"
+                                className="w-full py-3 bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                            >
+                                <Download size={18} /> Download Render
+                            </a>
                         </div>
                     </div>
                 </motion.section>
 
                 <div className="mt-16 text-center">
                     <p className="text-slate-400">
-                        For press inquiries, please contact <a href="mailto:press@hddrinksbeverages.com" className="text-cyan-400 hover:underline">press@hddrinksbeverages.com</a>
+                        For press inquiries, please contact <a href="mailto:info@hddrinksbeverages.com" className="text-cyan-400 hover:underline">info@hddrinksbeverages.com</a>
                     </p>
                 </div>
 
