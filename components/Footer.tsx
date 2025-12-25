@@ -39,6 +39,12 @@ export default function Footer() {
                         <h4 className="text-white font-bold mb-6 tracking-wide">Explore</h4>
                         <ul className="space-y-4 text-sm text-slate-400">
                             <li>
+                                <Link href="/about" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
+                                    About Us
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group">
                                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all" />
                                     Home
