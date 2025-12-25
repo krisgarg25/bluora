@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Target, Eye, Gem, MapPin, Shield, Mail, Factory, Droplet, Phone } from 'lucide-react';
 import ScrollImageSequence from '../components/ScrollImageSequence';
 import Header from '../components/Header';
-import LightRays from '../components/LightRays';
+
 import TiltedCard from '../components/TiltedCard';
 import Particles from '../components/Particles';
 import Link from 'next/link';
@@ -39,28 +39,10 @@ export default function BluoraLandingVideo() {
         <>
             {/* Fixed Glass Header */}
             <Header opacity={headerOpacity} />
-
             {/* HERO & MISSION SECTION */}
             <div ref={containerRef} className="relative bg-linear-to-br from-slate-900 via-blue-950 to-black text-white h-[600vh] overflow-x-hidden selection:bg-cyan-300 selection:text-black">
-
-                {/* Light Rays Effect */}
-                <div className="fixed top-0 left-0 w-full h-screen pointer-events-none z-5 overflow-hidden">
-                    <LightRays
-                        raysOrigin="top-center"
-                        raysColor="#06b6d4"
-                        raysSpeed={1.2}
-                        lightSpread={0.6}
-                        rayLength={1.5}
-                        followMouse={false}
-                        mouseInfluence={0}
-                        noiseAmount={0.15}
-                        distortion={0.08}
-                        className="opacity-40"
-                    />
-                </div>
-
                 {/* Radial Spotlight Behind Bottle */}
-                <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-400/30 via-blue-500/15 to-transparent rounded-full blur-3xl pointer-events-none z-10"></div>
+                <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-400/20 via-blue-500/10 to-transparent rounded-full blur-2xl pointer-events-none z-10"></div>
 
                 {/* Main Content Container */}
                 <div className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -73,11 +55,11 @@ export default function BluoraLandingVideo() {
                             style={{ opacity: textOpacity }}
                             className="hidden md:flex relative items-center justify-center gap-2 md:gap-4 px-4"
                         >
-                            <h1 className="text-[10rem] z-10 md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -mr-13 md:-mr-16">
+                            <h1 className="text-[10rem] z-10 md:text-[18rem] font-black tracking-tighter text-white drop-shadow-xl select-none -mr-13 md:-mr-16">
                                 BLU
                             </h1>
                             <div className="w-[200px] md:w-[350px]"></div>
-                            <h1 className="text-[10rem] md:text-[18rem] font-black tracking-tighter text-white drop-shadow-2xl select-none -ml-8 md:-ml-16">
+                            <h1 className="text-[10rem] md:text-[18rem] font-black tracking-tighter text-white drop-shadow-xl select-none -ml-8 md:-ml-16">
                                 ORA
                             </h1>
                         </motion.div>
@@ -94,8 +76,8 @@ export default function BluoraLandingVideo() {
                                     BLU
                                 </h1>
                                 {/* Premium Badge floating near BLU */}
-                                <div className="mt-[-20px] px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-md">
-                                    <p className="text-cyan-300 text-[10px] font-bold tracking-[0.3em] uppercase">Premium Hydration</p>
+                                <div className="mt-[-20px] px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-sm">
+                                    <p className="text-cyan-300 z-50 text-[10px] font-bold tracking-[0.3em] uppercase">Premium Hydration</p>
                                 </div>
                             </div>
 
@@ -104,17 +86,13 @@ export default function BluoraLandingVideo() {
                                 <h1 className="text-[35vw] font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-t from-white/20 to-transparent select-none scale-y-125 transform origin-top">
                                     ORA
                                 </h1>
-                                {/* Tagline anchoring the bottom */}
-                                <p className="mt-[-20px] mb-16 text-cyan-100/60 text-xs font-medium tracking-widest uppercase">
-                                    The Power of Pure
-                                </p>
                             </div>
                         </motion.div>
 
                         {/* Center: Bottle */}
-                        <div className="absolute z-30 flex items-center justify-center">
+                        <div className="absolute z-10 flex items-center justify-center">
                             <ScrollImageSequence
-                                totalFrames={154}
+                                totalFrames={60}
                                 folderPath={`${basePath}/bgn/`}
                                 filePrefix="ezgif-frame-"
                                 fileExtension="jpg" // Back to JPG for speed
@@ -125,12 +103,12 @@ export default function BluoraLandingVideo() {
                                 videoY={videoY}
                                 videorotate={videorotate}
                                 videoScale={videoScale}
-                                className="max-w-full max-h-full drop-shadow-[0_0_120px_rgba(6,182,212,0.8)] md:block hidden"
+                                className="max-w-full max-h-full drop-shadow-[0_0_60px_rgba(6,182,212,0.6)] md:block hidden"
                                 scrollEndThreshold={0.5}
                             />
                             {/* Mobile: Static centered bottle - Crystal Layout Hero Scale */}
                             <ScrollImageSequence
-                                totalFrames={154}
+                                totalFrames={60}
                                 folderPath={`${basePath}/bgn/`}
                                 filePrefix="ezgif-frame-"
                                 fileExtension="jpg" // Back to JPG for speed
@@ -140,8 +118,8 @@ export default function BluoraLandingVideo() {
                                 videoX={useTransform(scrollYProgress, [0, 1], ["0%", "-3%"])}
                                 videoY={useTransform(scrollYProgress, [0, 1], ["3%", "-4%"])}
                                 videorotate={useTransform(scrollYProgress, [0, 1], [7, 0])}
-                                videoScale={useTransform(scrollYProgress, [0, 1], [1.3, 0.8])}
-                                className="max-w-full max-h-full drop-shadow-[0_0_120px_rgba(6,182,212,0.8)] brightness-84 md:hidden block opacity-100 z-30"
+                                videoScale={useTransform(scrollYProgress, [0, 1], [0.75, 0.8])}
+                                className="max-w-full max-h-full drop-shadow-[0_0_60px_rgba(6,182,212,0.6)] brightness-84 md:hidden block opacity-100 z-30"
                                 scrollEndThreshold={0.5}
                             />
                         </div>
@@ -151,9 +129,9 @@ export default function BluoraLandingVideo() {
                             style={{ opacity: textOpacity }}
                             className="hidden md:block absolute bottom-[10%] text-center z-30 px-4"
                         >
-                            <p className="text-lg sm:text-2xl md:text-4xl font-bold text-cyan-100 tracking-wide drop-shadow-lg">
+                            {/* <p className="text-lg sm:text-2xl md:text-4xl font-bold text-cyan-100 tracking-wide drop-shadow-md">
                                 THE POWER OF PURE
-                            </p>
+                            </p> */}
                         </motion.div>
 
                         {/* Floating Water Bubbles */}
@@ -199,21 +177,21 @@ export default function BluoraLandingVideo() {
                     >
                         <defs>
                             <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                                 <feMerge>
                                     <feMergeNode in="coloredBlur" />
                                     <feMergeNode in="SourceGraphic" />
                                 </feMerge>
                             </filter>
                             <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                                 <feMerge>
                                     <feMergeNode in="coloredBlur" />
                                     <feMergeNode in="SourceGraphic" />
                                 </feMerge>
                             </filter>
                             <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                                 <feMerge>
                                     <feMergeNode in="coloredBlur" />
                                     <feMergeNode in="SourceGraphic" />
@@ -224,51 +202,48 @@ export default function BluoraLandingVideo() {
                         <motion.path
                             d="M 520 250 Q 750 300, 1250 480"
                             stroke="#06b6d4"
-                            strokeWidth="4"
+                            strokeWidth="3"
                             fill="none"
                             filter="url(#glow-cyan)"
                             strokeLinecap="round"
                             initial={{ pathLength: 0, opacity: 0 }}
                             whileInView={{ pathLength: 1, opacity: 0.7 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
                         />
 
                         <motion.path
                             d="M 520 600 Q 700 580, 1250 600"
                             stroke="#3b82f6"
-                            strokeWidth="4"
+                            strokeWidth="3"
                             fill="none"
                             filter="url(#glow-blue)"
                             strokeLinecap="round"
                             initial={{ pathLength: 0, opacity: 0 }}
                             whileInView={{ pathLength: 1, opacity: 0.7 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
                         />
 
                         <motion.path
                             d="M 520 900 Q 750 880, 1250 720"
                             stroke="#a855f7"
-                            strokeWidth="4"
+                            strokeWidth="3"
                             fill="none"
                             filter="url(#glow-purple)"
                             strokeLinecap="round"
                             initial={{ pathLength: 0, opacity: 0 }}
                             whileInView={{ pathLength: 1, opacity: 0.7 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 2, delay: 0.7, ease: "easeInOut" }}
                         />
 
-                        <motion.circle r="6" fill="#06b6d4" filter="url(#glow-cyan)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.3 }}>
+                        <motion.circle r="4" fill="#06b6d4" filter="url(#glow-cyan)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.3 }}>
                             <animateMotion dur="4s" repeatCount="indefinite" path="M 520 250 Q 750 300, 1250 480" begin="2.3s" />
                         </motion.circle>
 
-                        <motion.circle r="6" fill="#3b82f6" filter="url(#glow-blue)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.5 }}>
+                        <motion.circle r="4" fill="#3b82f6" filter="url(#glow-blue)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.5 }}>
                             <animateMotion dur="4s" repeatCount="indefinite" path="M 520 600 Q 700 580, 1250 600" begin="2.5s" />
                         </motion.circle>
 
-                        <motion.circle r="6" fill="#a855f7" filter="url(#glow-purple)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.7 }}>
+                        <motion.circle r="4" fill="#a855f7" filter="url(#glow-purple)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 2.7 }}>
                             <animateMotion dur="4s" repeatCount="indefinite" path="M 520 900 Q 750 880, 1250 720" begin="2.7s" />
                         </motion.circle>
                     </motion.svg>
@@ -305,10 +280,10 @@ export default function BluoraLandingVideo() {
                             transition={{ delay: 0.3, duration: 0.8 }}
                             className="absolute top-[6%] left-3 w-[280px] z-20 pointer-events-auto"
                         >
-                            <div className="bg-linear-to-br from-slate-900/90 to-cyan-950/90 backdrop-blur-sm rounded-2xl p-5 border border-cyan-500/30 shadow-[0_0_40px_rgba(0,0,0,0.4)] transform -rotate-2">
+                            <div className="bg-linear-to-br from-slate-900/90 to-cyan-950/90 backdrop-blur-sm rounded-2xl p-5 border border-cyan-500/30 shadow-lg transform -rotate-2">
                                 <div className="flex flex-col gap-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-3 bg-cyan-500/20 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+                                        <div className="p-3 bg-cyan-500/20 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]">
                                             <Target size={24} className="text-cyan-300" />
                                         </div>
                                         <h4 className="text-white font-black text-sm tracking-widest uppercase">MISSION</h4>
@@ -327,10 +302,10 @@ export default function BluoraLandingVideo() {
                             transition={{ delay: 0.5, duration: 0.8 }}
                             className="absolute top-[28%] right-3 w-[280px] z-0 pointer-events-auto"
                         >
-                            <div className="bg-linear-to-br from-slate-900/90 to-blue-950/90 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30 shadow-[0_0_40px_rgba(0,0,0,0.4)] transform rotate-2">
+                            <div className="bg-linear-to-br from-slate-900/90 to-blue-950/90 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30 shadow-lg transform rotate-2">
                                 <div className="flex flex-col gap-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-3 bg-blue-500/20 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                                        <div className="p-3 bg-blue-500/20 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]">
                                             <Eye size={24} className="text-blue-300" />
                                         </div>
                                         <h4 className="text-white font-black text-sm tracking-widest uppercase">VISION</h4>
@@ -349,10 +324,10 @@ export default function BluoraLandingVideo() {
                             transition={{ delay: 0.7, duration: 0.8 }}
                             className="absolute bottom-[27%] left-3 w-[280px]  pointer-events-auto -rotate-2"
                         >
-                            <div className="bg-linear-to-br from-slate-900/90 to-purple-950/90 backdrop-blur-sm rounded-2xl p-5 border border-purple-500/30 shadow-[0_0_40px_rgba(0,0,0,0.4)] transform">
+                            <div className="bg-linear-to-br from-slate-900/90 to-purple-950/90 backdrop-blur-sm rounded-2xl p-5 border border-purple-500/30 shadow-lg transform">
                                 <div className="flex flex-col gap-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-3 bg-purple-500/20 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+                                        <div className="p-3 bg-purple-500/20 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]">
                                             <Gem size={24} className="text-purple-300" />
                                         </div>
                                         <h4 className="text-white font-black text-sm tracking-widest uppercase">VALUES</h4>
@@ -371,7 +346,7 @@ export default function BluoraLandingVideo() {
                         className="hidden md:flex absolute left-8 md:left-24 top-[15%] flex-col gap-5 z-30"
                     >
                         {/* Mission Card */}
-                        <div className="rounded-2xl shadow-2xl pb-2">
+                        <div className="rounded-2xl shadow-xl pb-2">
                             <TiltedCard
                                 imageSrc={`${basePath}/mission.webp`}
                                 altText="Mission"
@@ -386,7 +361,7 @@ export default function BluoraLandingVideo() {
                                 showTooltip={false}
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div className="p-8 bg-linear-to-br from-cyan-500/95 via-cyan-600/95 to-blue-600/95 backdrop-blur-lg h-full flex flex-col justify-center rounded-2xl border border-cyan-400/20">
+                                    <div className="p-8 bg-linear-to-br from-cyan-500/95 via-cyan-600/95 to-blue-600/95 backdrop-blur-md h-full flex flex-col justify-center rounded-2xl border border-cyan-400/20">
                                         <div className="flex items-center gap-4 mb-3">
                                             <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
                                                 <Target size={28} className="text-white" />
@@ -402,7 +377,7 @@ export default function BluoraLandingVideo() {
                         </div>
 
                         {/* Vision Card */}
-                        <div className="rounded-2xl pb-2 shadow-2xl">
+                        <div className="rounded-2xl pb-2 shadow-xl">
                             <TiltedCard
                                 imageSrc={`${basePath}/vision.jpg`}
                                 altText="Vision"
@@ -417,7 +392,7 @@ export default function BluoraLandingVideo() {
                                 showTooltip={false}
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div className="p-8 bg-linear-to-br from-blue-500/95 via-blue-600/95 to-indigo-600/95 backdrop-blur-lg h-full flex flex-col justify-center rounded-2xl border border-blue-400/20">
+                                    <div className="p-8 bg-linear-to-br from-blue-500/95 via-blue-600/95 to-indigo-600/95 backdrop-blur-md h-full flex flex-col justify-center rounded-2xl border border-blue-400/20">
                                         <div className="flex items-center gap-4 mb-3">
                                             <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
                                                 <Eye size={28} className="text-white" />
@@ -433,7 +408,7 @@ export default function BluoraLandingVideo() {
                         </div>
 
                         {/* Values Card */}
-                        <div className="rounded-2xl pb-2 shadow-2xl">
+                        <div className="rounded-2xl pb-2 shadow-xl">
                             <TiltedCard
                                 imageSrc={`${basePath}/va.webp`}
                                 altText="Values"
@@ -448,7 +423,7 @@ export default function BluoraLandingVideo() {
                                 showTooltip={false}
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div className="p-8 bg-linear-to-br from-purple-500/95 via-purple-600/95 to-pink-600/95 backdrop-blur-lg h-full flex flex-col justify-center rounded-2xl border border-purple-400/20">
+                                    <div className="p-8 bg-linear-to-br from-purple-500/95 via-purple-600/95 to-pink-600/95 backdrop-blur-md h-full flex flex-col justify-center rounded-2xl border border-purple-400/20">
                                         <div className="flex items-center gap-4 mb-3">
                                             <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
                                                 <Gem size={28} className="text-white" />
@@ -481,12 +456,12 @@ export default function BluoraLandingVideo() {
                 <div className="absolute inset-0 z-0 opacity-40">
                     <Particles
                         particleColors={['#06b6d4', '#3b82f6']}
-                        particleCount={150}
-                        particleSpread={8}
+                        particleCount={80}
+                        particleSpread={4}
                         speed={0.1}
-                        particleBaseSize={80}
-                        moveParticlesOnHover={true}
-                        alphaParticles={true}
+                        particleBaseSize={60}
+                        moveParticlesOnHover={false}
+                        alphaParticles={false}
                         disableRotation={false}
                     />
                 </div>
