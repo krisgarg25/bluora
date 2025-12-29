@@ -573,10 +573,10 @@ export default function BluoraLandingVideo() {
                                     Info@hddrinksbeverages.com
                                 </a>
                                 <a
-                                    href="tel:+916239190187"
+                                    href="tel:+919463963831"
                                     className="block text-cyan-300 hover:text-cyan-200 transition-colors text-sm font-semibold"
                                 >
-                                    +91 6239 190187
+                                    +91 9463 963831
                                 </a>
                             </div>
                             <Link href="/contact">
@@ -695,10 +695,10 @@ export default function BluoraLandingVideo() {
                                 </a>
                                 <span className="hidden sm:inline text-white/30">•</span>
                                 <a
-                                    href="tel:+916239190187"
+                                    href="tel:+919463963831"
                                     className="text-cyan-300 hover:text-cyan-200 transition-colors text-sm md:text-base font-semibold"
                                 >
-                                    +91 6239 190187
+                                    +91 9463 963831
                                 </a>
                             </div>
                             <Link href="/contact" className="mt-4">

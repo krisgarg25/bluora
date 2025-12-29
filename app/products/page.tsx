@@ -8,6 +8,7 @@ import { Database, Droplet, Star, ShoppingCart } from 'lucide-react';
 import Particles from '../../components/Particles';
 import SpotlightCard from '../../components/SpotlightCard';
 import { useCart } from '../../context/CartContext';
+import { getImageUrl } from '@/lib/utils';
 
 // We'll define the interface to match our Schema
 interface Product {
@@ -38,21 +39,27 @@ export default function ProductsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let isMounted = true;
+
         const fetchProducts = async () => {
             try {
                 const res = await fetch('/api/products');
-                if (res.ok) {
+                if (res.ok && isMounted) {
                     const data = await res.json();
                     setProducts(data);
                 }
             } catch (error) {
-                console.error("Failed to fetch products", error);
+                if (isMounted) console.error("Failed to fetch products", error);
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
 
         fetchProducts();
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     if (loading) {
@@ -146,7 +153,7 @@ export default function ProductsPage() {
                                         </span>
 
                                         <img
-                                            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${product.image}`}
+                                            src={getImageUrl(product.image)}
                                             alt={product.title}
                                             className={`relative z-10 w-auto object-contain drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:scale-105 transition-transform duration-500 ${product.size === '1L' ? 'h-82' : product.size === '500ml' ? 'h-72' : 'h-56'
                                                 }`}

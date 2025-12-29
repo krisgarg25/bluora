@@ -8,6 +8,7 @@ import Header from '../../../components/Header';
 import Particles from '../../../components/Particles';
 import { useCart } from '../../../context/CartContext';
 import SpotlightCard from '../../../components/SpotlightCard';
+import { getImageUrl } from '@/lib/utils';
 
 // Reuse types/interfaces
 interface Product {
@@ -39,24 +40,30 @@ export default function ProductDetailPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let isMounted = true;
+
         const fetchProduct = async () => {
             if (!params.id) return;
             try {
                 const res = await fetch(`/api/products/${params.id}`);
-                if (res.ok) {
+                if (res.ok && isMounted) {
                     const data = await res.json();
                     setProduct(data);
-                } else {
+                } else if (isMounted) {
                     console.error("Product not found");
                 }
             } catch (error) {
-                console.error("Failed to fetch product", error);
+                if (isMounted) console.error("Failed to fetch product", error);
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
 
         fetchProduct();
+
+        return () => {
+            isMounted = false;
+        };
     }, [params.id]);
 
     if (loading) {
@@ -125,7 +132,7 @@ export default function ProductDetailPage() {
                             spotlightColor={product.spotlight as `rgba(${number}, ${number}, ${number}, ${number})`}
                         >
                             <motion.img
-                                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${product.image}`}
+                                src={getImageUrl(product.image)}
                                 alt={product.title}
                                 animate={{ y: [0, -15, 0] }}
                                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
