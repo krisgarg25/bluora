@@ -48,7 +48,7 @@ const ContactPage = () => {
         const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Subject:* ${formData.subject}%0A*Message:* ${formData.message}`;
 
         // Send to WhatsApp
-        window.open(`https://wa.me/916239190187?text=${whatsappMessage}`, "_blank");
+        window.open(`https://wa.me/919463963831?text=${whatsappMessage}`, "_blank");
 
         // Show success message
         setIsSubmitted(true);
@@ -70,7 +70,7 @@ const ContactPage = () => {
 
     const handleWhatsAppClick = () => {
         window.open(
-            "https://wa.me/916239190187?text=Hi, I would like to know more about Bluora water products",
+            "https://wa.me/919463963831?text=Hi, I would like to know more about Bluora water products",
             "_blank"
         );
     };
@@ -198,10 +198,10 @@ const ContactPage = () => {
                                             Phone Number
                                         </h3>
                                         <a
-                                            href="tel:+916239190187"
+                                            href="tel:+919463963831"
                                             className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
                                         >
-                                            +91 6239 190187
+                                            +91 9463 963831
                                         </a>
                                     </div>
                                 </div>
