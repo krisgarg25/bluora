@@ -41,7 +41,7 @@ export default function ScrollImageSequence({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<{ color: HTMLImageElement; mask: HTMLImageElement | null }[]>([]);
     const [singleMask, setSingleMask] = useState<HTMLImageElement | null>(null);
-    const [currentFrame, setCurrentFrame] = useState(0);
+    const [currentFrame, setCurrentFrame] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);
 
     // Preload all images

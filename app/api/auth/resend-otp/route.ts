@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbcon';
 import User from '@/schema/userschema';
-import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import { Resend } from 'resend';
+import OtpEmail from '@/emails/OtpEmail';
 
 export async function POST(req: Request) {
     try {
@@ -30,21 +31,21 @@ export async function POST(req: Request) {
         user.otpExpiry = otpExpiry;
         await user.save();
 
-        // Send Email
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
+        // Initialize Resend inside the handler
+        const resend = new Resend(process.env.RESEND_API);
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: 'Bluora - New OTP Request',
-            text: `Your new OTP is: ${otp}. It expires in 2 minutes.`,
-        });
+        // Send Email via Resend
+        try {
+            await resend.emails.send({
+                from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+                to: email,
+                subject: 'Bluora - New OTP Request',
+                react: OtpEmail({ validationCode: otp }),
+            });
+        } catch (emailError) {
+            console.error("Resend Email Failed:", emailError);
+            // We continue to return 200
+        }
 
         return NextResponse.json({ message: 'New OTP sent verified.' }, { status: 200 });
 

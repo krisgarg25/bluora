@@ -2,8 +2,9 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbcon';
 import User from '@/schema/userschema';
 import bcrypt from 'bcryptjs';
-import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import { Resend } from 'resend';
+import OtpEmail from '@/emails/OtpEmail';
 
 export async function POST(req: Request) {
     try {
@@ -33,30 +34,24 @@ export async function POST(req: Request) {
 
         await newUser.save();
 
-        // Send Email
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true, // true for 465, false for other ports
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
+        // Send Email via Resend
+        console.log("Attempting to send email...");
+        console.log("FROM:", process.env.EMAIL_FROM || 'onboarding@resend.dev');
+        console.log("TO:", email);
+        console.log("API Key Present:", !!process.env.RESEND_API);
 
+        const resend = new Resend(process.env.RESEND_API);
         try {
-            await transporter.verify();
-        } catch (verifyError) {
-            console.error("SMTP Connection Failed:", verifyError);
-            throw verifyError;
+            const data = await resend.emails.send({
+                from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+                to: email,
+                subject: 'Bluora - Verify your email',
+                react: OtpEmail({ validationCode: otp }),
+            });
+            console.log("Email sent successfully:", data);
+        } catch (emailError) {
+            console.error("Resend Email Failed:", emailError);
         }
-
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: 'Bluora - Verify your email',
-            text: `Your OTP is: ${otp}`,
-        });
 
         return NextResponse.json({ message: 'User registered. OTP sent.' }, { status: 201 });
 
