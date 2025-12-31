@@ -100,7 +100,7 @@ export default function PressClient() {
                             <h3 className="font-bold text-white mb-1">Official Logo</h3>
                             <p className="text-sm text-slate-400 mb-4">High-resolution PNG</p>
                             <a
-                                href="/BLUORA-logo.png"
+                                href="/BLU/Users/harshsingla/Downloads/bluora 2/bluora/public/BLUORA-logo.pngORA-logo.png"
                                 download="BLUORA-logo.png"
                                 className="w-full py-3 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
                             >
