@@ -35,20 +35,14 @@ export async function POST(req: Request) {
         await newUser.save();
 
         // Send Email via Resend
-        console.log("Attempting to send email...");
-        console.log("FROM:", process.env.EMAIL_FROM || 'onboarding@resend.dev');
-        console.log("TO:", email);
-        console.log("API Key Present:", !!process.env.RESEND_API);
-
         const resend = new Resend(process.env.RESEND_API);
         try {
-            const data = await resend.emails.send({
+            await resend.emails.send({
                 from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
                 to: email,
                 subject: 'Bluora - Verify your email',
                 react: OtpEmail({ validationCode: otp }),
             });
-            console.log("Email sent successfully:", data);
         } catch (emailError) {
             console.error("Resend Email Failed:", emailError);
         }
