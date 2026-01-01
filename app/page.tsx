@@ -66,28 +66,7 @@ export default function BluoraLandingVideo() {
 
                         {/* MOBILE LAYOUT - Magazine Cover Style */}
                         {/* Background Text Layer - Fills the empty space */}
-                        <motion.div
-                            style={{ opacity: textOpacity }}
-                            className="md:hidden absolute inset-0 flex flex-col justify-between py-24 z-10 overflow-hidden pointer-events-none"
-                        >
-                            {/* Giant BLU - Top Half */}
-                            <div className="flex flex-col items-center">
-                                <h1 className="text-[35vw] mt-12 font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none scale-y-125 transform origin-bottom">
-                                    BLU
-                                </h1>
-                                {/* Premium Badge floating near BLU */}
-                                <div className="mt-[-20px] px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-sm">
-                                    <p className="text-cyan-300 z-50 text-[10px] font-bold tracking-[0.3em] uppercase">Premium Hydration</p>
-                                </div>
-                            </div>
-
-                            {/* Giant ORA - Bottom Half */}
-                            <div className="flex flex-col items-center">
-                                <h1 className="text-[35vw] font-black leading-none tracking-wider text-transparent bg-clip-text bg-linear-to-t from-white/20 to-transparent select-none scale-y-125 transform origin-top">
-                                    ORA
-                                </h1>
-                            </div>
-                        </motion.div>
+                        {/* Mobile: BLU/ORA Title (Handled by MobileSplitReveal) */}
 
                         {/* Center: Bottle */}
                         <div className="absolute z-10 flex items-center justify-center">
@@ -121,6 +100,7 @@ export default function BluoraLandingVideo() {
                                 videoScale={useTransform(scrollYProgress, [0, 1], [0.75, 0.8])}
                                 className="max-w-full max-h-full drop-shadow-[0_0_60px_rgba(6,182,212,0.6)] brightness-84 md:hidden block opacity-100 z-30"
                                 scrollEndThreshold={0.5}
+                                textOpacity={textOpacity}
                             />
                         </div>
 

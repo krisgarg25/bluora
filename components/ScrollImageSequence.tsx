@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import WaterMorphAnimation from './WaterMorphAnimation';
+import MobileSplitReveal from './MobileSplitReveal';
 
 interface ScrollImageSequenceProps {
     totalFrames: number;
@@ -21,6 +22,7 @@ interface ScrollImageSequenceProps {
     className?: string;
     videorotate: MotionValue<number>;
     scrollEndThreshold?: number;
+    textOpacity?: MotionValue<number>;
 }
 
 export default function ScrollImageSequence({
@@ -37,7 +39,8 @@ export default function ScrollImageSequence({
     videorotate,
     videoScale,
     className,
-    scrollEndThreshold = 1
+    scrollEndThreshold = 1,
+    textOpacity
 }: ScrollImageSequenceProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<{ color: HTMLImageElement; mask: HTMLImageElement | null }[]>([]);
@@ -183,7 +186,7 @@ export default function ScrollImageSequence({
     const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
     return (
-        <div className={`${className} relative flex items-center justify-center`} style={{ minHeight: '300px', minWidth: '100px' }}>
+        <div className={`${className} relative flex items-center justify-center min-w-full min-h-[103vh]`}>
             {/* 1. The Real Bottle Image Sequence */}
             {/* We render it relative so it defines the size of the container once loaded */}
             {/* Opacity controls visibility during cross-fade */}
@@ -199,30 +202,30 @@ export default function ScrollImageSequence({
                     rotateZ: videorotate,
                     objectFit: 'contain',
                     opacity: isAnimationComplete ? 1 : 0,
-                    display: isAnimationComplete || !isLoading ? 'block' : 'none' // Hide completely if loading
                 }}
                 className="z-10 transition-opacity duration-1000" // Slower fade
             />
 
-            {/* 2. Loading State */}
-            {!isAnimationComplete && (
-                <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                    {/* Desktop: Water Morph Animation */}
-                    <div className="hidden md:block">
+            {/* 2. Desktop Loading Layer (z-20 - Front) */}
+            <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                {!isAnimationComplete && (
+                    <div className="hidden md:block w-full h-full items-center justify-center">
                         <WaterMorphAnimation
                             isLoaded={!isLoading}
                             onComplete={() => setIsAnimationComplete(true)}
                         />
                     </div>
+                )}
+            </div>
 
-                    {/* Mobile: Simple Loading Text */}
-                    <div className="block md:hidden">
-                        <p className="text-cyan-300 font-bold tracking-[0.2em] uppercase animate-pulse">
-                            Loading...
-                        </p>
-                    </div>
-                </div>
-            )}
+            {/* 3. Mobile Loading Layer (z-0 - Back) */}
+            <div className="block md:hidden absolute z-0 pointer-events-none w-full h-full">
+                <MobileSplitReveal
+                    isLoaded={!isLoading}
+                    onComplete={() => setIsAnimationComplete(true)}
+                    textOpacity={textOpacity}
+                />
+            </div>
         </div>
     );
 }

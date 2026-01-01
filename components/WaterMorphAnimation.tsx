@@ -24,6 +24,9 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
     }, []);
 
     useEffect(() => {
+        // Prevent running on Mobile (< 768px) to avoid conflicting with MobileSplitReveal
+        if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+
         // Only expand if content is loaded AND minimum time has passed
         if (isLoaded && canExpand) {
             setAnimationState('expanding');
