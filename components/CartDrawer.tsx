@@ -3,7 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import { X, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react';
+import { getImageUrl } from '../lib/utils';
 import React, { useEffect } from 'react';
+
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -93,7 +95,7 @@ export default function CartDrawer() {
                                         <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-slate-900 to-black border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
                                             {/* We can use the actual image later if stored in item, or generic based on id */}
                                             <img
-                                                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/${item.image || 'bluora.png'}`}
+                                                src={getImageUrl(item.image || 'bluora.png')}
                                                 alt={item.title}
                                                 className="h-20 mb-2 w-auto object-contain drop-shadow-[0_0_10px_rgba(6,182,212,0.3)]"
                                             />

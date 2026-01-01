@@ -8,6 +8,7 @@ import Particles from '../../components/Particles';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, User, CreditCard, ShieldCheck, Truck, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { getImageUrl } from '../../lib/utils';
 
 export default function CheckoutPage() {
     const { data: session, status } = useSession();
@@ -344,7 +345,7 @@ export default function CheckoutPage() {
                                         <div className="w-16 h-16 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
                                             {/* Fallback image if actual image is missing */}
                                             {item.image ? (
-                                                <img src={item.image} alt={item.title} className="w-full h-full object-contain p-1" />
+                                                <img src={getImageUrl(item.image)} alt={item.title} className="w-full h-full object-contain p-1" />
                                             ) : (
                                                 <div className="text-xs text-white/20">No Img</div>
                                             )}
