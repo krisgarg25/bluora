@@ -63,7 +63,7 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
                     fillOpacity="0.4"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    transition={{ duration: 1, delay: 0.1 }}
                 />
 
                 {/* Internal Bubbles / Liquid Effect (Only visible during loading) */}
