@@ -19,7 +19,7 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
     useEffect(() => {
         const timer = setTimeout(() => {
             setCanExpand(true);
-        }, 1500);
+        }, 1900);
         return () => clearTimeout(timer);
     }, []);
 
@@ -38,19 +38,19 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
     return (
         <div className="absolute inset-0 flex items-center justify-center pr-8 z-50 overflow-visible">
             <motion.svg
-                width="120"
-                height="220"
+                width="300"
+                height="100"
                 viewBox="0 0 120 220"
                 className="drop-shadow-[0_0_30px_rgba(6,182,212,0.6)]"
-                initial={{ scale: 1.6, opacity: 1 }}
+                initial={{ scale: 3, opacity: 1 }}
                 animate={{
-                    scale: animationState === 'expanding' ? 3.5 : 1.6,
+                    scale: animationState === 'expanding' ? 50 : 3, // Match initial scale (2)
                     opacity: animationState === 'expanding' ? 0 : 1,
                     rotateZ: animationState === 'expanding' ? 5 : 0,
                 }}
                 transition={{
                     scale: { duration: 0.8, ease: "easeInOut" },
-                    opacity: { duration: 0.6, delay: 0.2, ease: "easeOut" },
+                    opacity: { duration: 0.4, delay: 0.4, ease: "easeOut" }, // Keep visible longer while zooming
                     rotateZ: { duration: 0.6, delay: 0.1, ease: "easeOut" }
                 }}
             >
@@ -63,7 +63,7 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
                     fillOpacity="0.4"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.1 }}
+                    transition={{ duration: 1.9, ease: "easeInOut" }}
                 />
 
                 {/* Internal Bubbles / Liquid Effect (Only visible during loading) */}
@@ -84,19 +84,6 @@ export default function WaterMorphAnimation({ isLoaded, onComplete }: WaterMorph
                     </>
                 )}
             </motion.svg>
-
-            {/* Loading Text */}
-            <motion.div
-                className="absolute bottom-[10%] text-center pl-3"
-                animate={{ opacity: animationState === 'loading' ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-            >
-                <motion.p
-                    className="text-cyan-300 font-bold tracking-[0.3em] text-xs uppercase animate-pulse"
-                >
-                    Loading...
-                </motion.p>
-            </motion.div>
         </div>
     );
 }

@@ -204,14 +204,23 @@ export default function ScrollImageSequence({
                 className="z-10 transition-opacity duration-1000" // Slower fade
             />
 
-            {/* 2. The Water Morph Animation */}
-            {/* Visible when loading OR when morphing is active */}
+            {/* 2. Loading State */}
             {!isAnimationComplete && (
                 <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                    <WaterMorphAnimation
-                        isLoaded={!isLoading}
-                        onComplete={() => setIsAnimationComplete(true)}
-                    />
+                    {/* Desktop: Water Morph Animation */}
+                    <div className="hidden md:block">
+                        <WaterMorphAnimation
+                            isLoaded={!isLoading}
+                            onComplete={() => setIsAnimationComplete(true)}
+                        />
+                    </div>
+
+                    {/* Mobile: Simple Loading Text */}
+                    <div className="block md:hidden">
+                        <p className="text-cyan-300 font-bold tracking-[0.2em] uppercase animate-pulse">
+                            Loading...
+                        </p>
+                    </div>
                 </div>
             )}
         </div>
