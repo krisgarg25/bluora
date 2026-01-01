@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { motion, MotionValue } from 'framer-motion';
+import WaterMorphAnimation from './WaterMorphAnimation';
 
 interface ScrollImageSequenceProps {
     totalFrames: number;
@@ -176,28 +177,43 @@ export default function ScrollImageSequence({
         };
     }, [isLoading, images, currentFrame, totalFrames, scrollEndThreshold, singleMask]);
 
-    if (isLoading) {
-        return (
-            <div className={`${className} flex items-center justify-center`}>
-                <div className="text-white text-sm">Loading...</div>
-            </div>
-        );
-    }
+
+
+    // State to track if the animation transition is finished
+    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
     return (
-        <motion.canvas
-            ref={canvasRef}
-            style={{
-                x: videoX,
-                y: videoY,
-                scale: videoScale,
-                willChange: 'transform',
-                width: '100%',
-                height: '100%',
-                rotateZ: videorotate,
-                objectFit: 'contain'
-            }}
-            className={className}
-        />
+        <div className={`${className} relative flex items-center justify-center`} style={{ minHeight: '300px', minWidth: '100px' }}>
+            {/* 1. The Real Bottle Image Sequence */}
+            {/* We render it relative so it defines the size of the container once loaded */}
+            {/* Opacity controls visibility during cross-fade */}
+            <motion.canvas
+                ref={canvasRef}
+                style={{
+                    x: videoX,
+                    y: videoY,
+                    scale: videoScale,
+                    willChange: 'transform',
+                    width: '100%',
+                    height: '100%',
+                    rotateZ: videorotate,
+                    objectFit: 'contain',
+                    opacity: isAnimationComplete ? 1 : 0,
+                    display: isAnimationComplete || !isLoading ? 'block' : 'none' // Hide completely if loading
+                }}
+                className="z-10 transition-opacity duration-1000" // Slower fade
+            />
+
+            {/* 2. The Water Morph Animation */}
+            {/* Visible when loading OR when morphing is active */}
+            {!isAnimationComplete && (
+                <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <WaterMorphAnimation
+                        isLoaded={!isLoading}
+                        onComplete={() => setIsAnimationComplete(true)}
+                    />
+                </div>
+            )}
+        </div>
     );
 }

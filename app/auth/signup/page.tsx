@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function SignupPage() {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +21,21 @@ export default function SignupPage() {
         e.preventDefault();
         setError('');
         setLoading(true);
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!emailRegex.test(formData.email)) {
+            setError("Invalid email address");
+            setLoading(false);
+            return;
+        }
+
+        if (!passwordRegex.test(formData.password)) {
+            setError("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.");
+            setLoading(false);
+            return;
+        }
 
         try {
             const res = await fetch('/api/auth/register', {
@@ -77,14 +94,23 @@ export default function SignupPage() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-cyan-100/80 mb-2">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            required
-                            placeholder="••••••••"
-                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 text-white placeholder:text-white/30 transition-all outline-none"
-                            onChange={handleChange}
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                required
+                                placeholder="••••••••"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 text-white placeholder:text-white/30 transition-all outline-none pr-10"
+                                onChange={handleChange}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-100/60 hover:text-white transition-colors"
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                     </div>
                     <button
                         type="submit"
